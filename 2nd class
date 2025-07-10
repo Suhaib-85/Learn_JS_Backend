@@ -1,1 +1,54 @@
+// objects
+//objects can have property names that resemble reserved words this does not cause syntax error
+let user = {
+	for: 100,
+	if: "hello",
+	isAdmin: true,
+	username: "Sohaib",
+	age: 20,
+	education: "Uni_Grad",
+	"like movies": true
+};
 
+alert("Administrator mode: " + user.isAdmin);
+alert(user.username);
+alert(user.education);
+delete user.education;
+alert(user["like movies"]);
+user["likes cats"] = true;
+user.catname = "cat";
+alert(user.catname);
+alert(user["likes cats"]);
+
+let fruit = prompt("Which fruit to buy?");
+let bag = {
+	5: fruit,
+	[fruit]: 100,
+	[fruit + 'Computers']: "bad"
+};
+alert(bag[5]);		// displays the input value as an alert
+alert(bag[fruit]);	// 100
+alert(bag[fruit + 'Computers']); 	//bad
+alert("red" in bag);		//false, since no key, named "red", exists in bag object
+
+let user2 = {
+  name: "John",
+  age: 30,
+  isAdmin: true
+};
+
+for (key in user2) {
+  alert( key ); 	//name, age, inAdmin
+  alert( user2[key] );	//John, 30, true
+}	//output: name, john, age, 30, isAdmin, true
+
+let codes = {
+	"4": "Korea",
+  	"1": "USA",
+  	"3": "Pakistan",
+  	"2": "China",
+};
+
+for (code in codes) {
+  alert( codes[code] ); //automatically sorts itself in ascending order
+}
