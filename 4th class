@@ -1,7 +1,58 @@
+//prototypal inheritence
 let animal = {
-	eats: true
+	eats: true,
+	walk() {
+    		alert("walking");
+  	}
 };
 let rabbit = {
 	jumps: true
 };
 rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
+alert(rabbit.eats); //true
+
+let rabbit = {
+	jumps: true,
+	__proto__: animal	//another way to set prototype
+};
+// walk is taken from the prototype
+rabbit.walk(); //walking
+
+let longEar = {
+  earLength: 10,
+  __proto__: rabbit
+};
+LongEar.walk();		//we can make long prototype chains
+let dog = Object.create(animal, {
+  jumps: {
+    value: false
+  }
+});  //same as {__proto__: animal}
+
+let user = {
+  name: "John",
+  surname: "Smith",
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  },
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  }
+};
+let admin = {
+  isAdmin: true
+};
+Object.setPrototypeOf(admin, user);	//moder and preffered way to set prototypes
+alert(admin.fullName); // John Smith (*)
+// setter triggers!
+admin.fullName = "Alice Cooper"; // (**)
+alert(admin.fullName); // Alice Cooper, state of admin modified
+alert(user.fullName); // John Smith, state of user protected
+
+const isOwn = rabbit.hasOwnProperty(jumps); //isOwn = true;
+//for .. in loops over inherited properties as well
+
+There are only three limitations:
+1) The references can’t go in circles. JavaScript will throw an error if we try to assign __proto__ in a circle.
+2) The value of __proto__ can be either an object or null. Other types are ignored.
+3) There can be only one [[Prototype]]. An object may not inherit from two others.
