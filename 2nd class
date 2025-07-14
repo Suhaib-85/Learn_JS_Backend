@@ -52,3 +52,5 @@ let codes = {
 for (code in codes) {
   alert( codes[code] ); //automatically sorts itself in ascending order (only for integers)
 }
+
+const isEmpty = (obj) => Object.keys(obj).length === 0; //function to check if the object is empty or not.
