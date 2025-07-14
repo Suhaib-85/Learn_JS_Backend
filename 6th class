@@ -1,0 +1,37 @@
+A Set is a special type collection – “set of values” (without keys), where each value may occur only once.
+
+Its main methods are:
+
+new Set([iterable]) – creates the set, and if an iterable object is provided (usually an array), copies values from it into the set.
+set.add(value) – adds a value, returns the set itself.
+set.delete(value) – removes the value, returns true if value existed at the moment of the call, otherwise false.
+set.has(value) – returns true if the value exists in the set, otherwise false.
+set.clear() – removes everything from the set.
+set.size – is the elements count.
+
+The same methods Map has for iterators are also supported:
+
+set.keys() – returns an iterable object for values,
+set.values() – same as set.keys(), for compatibility with Map,
+set.entries() – returns an iterable object for entries [value, value], exists for compatibility with Map.
+
+The first difference between Map and WeakMap is that it doesn’t prevent garbage-collection of key objects and that the keys must be objects,
+not primitive values:
+
+let weakMap = new WeakMap();
+let obj = {};
+weakMap.set(obj, "ok");
+weakMap.set("test", "Whoops"); // Error, because "test" is a string not an object
+let john = { name: "John" };
+let weakMap = new WeakMap();
+weakMap.set(john, "...");
+john = null;   // the entire key-value pair is garbage collected from memory
+
+WeakMap does not support iteration and methods keys(), values(), entries(), so there’s no way to get all keys or values from it.
+
+WeakMap has only the following methods:
+
+weakMap.set(key, value)
+weakMap.get(key)
+weakMap.delete(key)
+weakMap.has(key)
