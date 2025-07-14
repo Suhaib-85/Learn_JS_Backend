@@ -50,5 +50,5 @@ let codes = {
 };
 
 for (code in codes) {
-  alert( codes[code] ); //automatically sorts itself in ascending order
+  alert( codes[code] ); //automatically sorts itself in ascending order (only for integers)
 }
