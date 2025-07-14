@@ -1,0 +1,5 @@
+//Default Params
+function Test(a,b=1){
+  console.log(a*b);
+};
+Test(1);
