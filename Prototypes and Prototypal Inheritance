@@ -1,4 +1,4 @@
-//prototypal inheritence
+//prototypal inheritance
 let animal = {
 	eats: true,
 	walk() {
